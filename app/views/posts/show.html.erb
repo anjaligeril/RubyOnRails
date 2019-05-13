@@ -92,6 +92,10 @@
       text-align: justify;
       font-size: 24px;
     }
+    .contentTitle{
+      margin: 50px 0px;
+      text-shadow: 1px 1px 2px yellow;
+    }
 </style>
 <body>
 <nav class="navbar">
@@ -132,7 +136,7 @@
   </div>
 </nav>
 <div class="content">
-  <h2><%= @currentPost.title %></h2>
+  <h2 class="contentTitle"><%= @currentPost.title %></h2>
   <img src="<%= @currentPost.image %>" height="400px" width="80%">
 <h3>Category:<%= @currentPost.category %></h3>
   <h4>
