@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+</head>
+<style>
+  body{
+    font-family: times, serif;
+  }
+  .navbar-brand{
+    font-size:38px;
+    color:black;
+    font-weight:bolder;
+    text-shadow: 1px 1px 2px yellow;
+  }
+  .nav-item a{
+    font-size:18px;
+    font-weight:bold;
+    color:black;
+  }
+
+  .hero{
+    background-image: url("/about.jpg");
+    background-size:cover;
+    height:400px;
+
+  }
+  .hero h2{
+    text-align: center;
+    padding-top: 50px;
+    color:yellow;
+    font-size: 30px;
+    font-weight: bolder;
+    text-shadow: 1px 1px 2px black;
+  }
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin-top: 10px;
+    text-align: center;
+    font-family: arial;
+    height:350px;
+  }
+
+
+  .card button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+
+  .card a:hover {
+    opacity: 0.7;
+  }
+  .content
+  {
+    margin: 10px;
+  }
+  .content h2{
+    text-align: center;
+    color:yellow;
+    font-weight: bolder;
+    text-shadow: 1px 1px 2px black;
+  }
+  .content h5{
+    text-align: justify;
+    color:black;
+    margin:50px 100px;
+    font-size: 18px;
+
+  }
+
+  .dot{
+    color:yellow;
+  }
+
+
+  .listCards h2{
+    text-align: center;
+  }
+  footer{
+    background-color: black;
+    color:white;
+    font-size: 20px;
+    text-align: center;
+    height:100px;
+    padding-top: 30px;
+  }
+  .btn{
+    color:white;
+    margin: 5px;
+    font-family: times, serif;
+    font-weight: bolder;
+  }
+  .card-title{
+    font-family: times, serif;
+  }
+  .name{
+    color:yellow;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 3px black;
+  }
+
+</style>
+<body>
+<nav class="navbar">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/home">All About Kids<span class="dot">...</span></a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="nav-item active"><a href="/home" class="nav-link">Home</a></li>
+      <li class="nav-item"><a href="/home/about" class="nav-link">About</a></li>
+      <li class="nav-item"><a href="/posts/category/food" class="nav-link">Foods</a></li>
+      <li class="nav-item"><a href="/posts/category/fashion" class="nav-link">Fashion</a></li>
+      <li class="nav-item"><a href="/posts/category/books" class="nav-link">Books</a></li>
+      <li class="nav-item"><a href="/posts/category/toys" class="nav-link">Toys</a></li>
+      <li class="nav-item"><a href="/home/contact" class="nav-link">Contact</a></li>
+
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+
+      <% if user_signed_in? %>
+        <li class="button1"><a href="/posts/new" class="btn btn-success">Add Post</a></li>
+        <li class="nav-item">
+          <%= link_to('Logout', destroy_user_session_path, method: :delete,class:'nav-link')  %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to('Login', new_user_session_path,class:'nav-link')  %>
+        </li>
+      <% end %>
+      <% if user_signed_in? %>
+        <li class="nav-item"><%= link_to('Edit Account Info', edit_user_registration_path,class:'nav-link') %></li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to('Register', new_user_registration_path,class:'nav-link')  %>
+        </li>
+      <% end %>
+
+    </ul>
+  </div>
+</nav>
+<div class="hero">
+  <h2>About Us</h2>
+</div>
+<div class="content">
+  <h2>All About Kids</h2>
+
+<h5>A blog (a truncation of "weblog")[1] is a discussion or informational website published on the
+  World Wide Web consisting of discrete, often informal diary-style text entries (posts). Posts are
+  typically displayed in reverse chronological order, so that the most recent post appears first,
+  at the top of the web page. Until 2009, blogs were usually the work of a single individual
+  \,[citation needed] occasionally of a small group, and often covered a single subject or topic.
+  In the 2010s, "multi-author blogs" (MABs) emerged, featuring the writing of multiple authors and
+  sometimes professionally edited. MABs from newspapers, other media outlets, universities, think tanks,
+  advocacy groups, and similar institutions account for an increasing quantity of blog traffic. The rise
+  of Twitter and other "microblogging" systems helps integrate MABs and single-author blogs into the news
+  media. Blog can also be used as a verb, meaning to maintain or add content to a blog. The emergence and growth of blogs in the late 1990s coincided with the advent of web publishing
+    tools that facilitated the posting of content by non-technical users who did not have much experience
+    with HTML or computer programming. Previously, a knowledge of such technologies as HTML and File
+    Transfer Protocol had been required to publish content on the Web, and early Web users therefore
+    tended to be hackers and computer enthusiasts. In the 2010s, the majority are interactive Web 2.0
+    websites, allowing visitors to leave online comments, and it is this interactivity that distinguishes
+    them from other static websites.[2] In that sense, blogging can be seen as a form of social networking
+    service. Indeed, bloggers do not only produce content to post on their blogs, but also often build social
+    relations with their readers and other bloggers.[3] However, there are high-readership blogs
+    which do not allow comments.</h5>
+</div>
+
+
+</body>
+</html>

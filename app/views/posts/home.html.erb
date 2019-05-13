@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+</head>
+<style>
+  body{
+    font-family: times, serif;
+  }
+.navbar-brand{
+  font-size:38px;
+  color:black;
+  font-weight:bolder;
+  text-shadow: 1px 1px 2px yellow;
+}
+.nav-item a{
+  font-size:18px;
+  font-weight:bold;
+  color:black;
+}
+   .title {
+     color:yellow;
+     font-size:30px;
+     font-weight:bold;
+     text-shadow: 1px 1px 2px black;
+   }
+   .description{
+      color:black !important;
+     font-size:24px;
+     padding: 20px!important;
+     text-align:justify;
+
+   }
+     .heroContent{
+       height:500px;
+       width:100%;
+       padding-top:50px;
+     }
+
+   .card {
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+     max-width: 300px;
+     margin: 10px;
+     text-align: center;
+     font-family: arial;
+     height:375px;
+   }
+
+
+   .card a {
+     font-family: times, serif;
+     text-align: center;
+     cursor: pointer;
+
+     font-size: 18px;
+   }
+
+   .card a:hover {
+     opacity: 0.7;
+   }
+.hero
+{
+  background-size:cover;
+}
+
+    .dot{
+      color:yellow;
+    }
+
+    .listCards {
+      margin: 50px;
+    }
+    .listCards h2{
+      text-align: center;
+      color: yellow;
+      text-shadow: 1px 1px 2px black;
+    }
+  .card-title{
+    font-family: times, serif;
+  }
+    footer{
+      background-color: black;
+      color:white;
+      font-size: 20px;
+      text-align: center;
+      height:100px;
+      padding-top: 30px;
+    }
+</style>
+<body>
+<nav class="navbar">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/home">All About Kids<span class="dot">...</span></a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="nav-item active"><a href="/home" class="nav-link">Home</a></li>
+      <li class="nav-item"><a href="/home/about" class="nav-link">About</a></li>
+      <li class="nav-item"><a href="/posts/category/food" class="nav-link">Foods</a></li>
+      <li class="nav-item"><a href="/posts/category/fashion" class="nav-link">Fashion</a></li>
+      <li class="nav-item"><a href="/posts/category/books" class="nav-link">Books</a></li>
+      <li class="nav-item"><a href="/posts/category/toys" class="nav-link">Toys</a></li>
+      <li class="nav-item"><a href="/home/contact" class="nav-link">Contact</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <% if user_signed_in? %>
+        <li class="button1"><a href="/posts/new" class="btn btn-success">Add Post</a></li>
+        <li class="nav-item">
+
+          <%= link_to('Logout', destroy_user_session_path, method: :delete,class:'nav-link')  %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to('Login', new_user_session_path,class:'nav-link')  %>
+        </li>
+      <% end %>
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to('Edit Account Info', edit_user_registration_path,class:'nav-link') %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to('Register', new_user_registration_path,class:'nav-link')  %>
+        </li>
+      <% end %>
+
+    </ul>
+  </div>
+</nav>
+  <div class="hero col-lg-8" style="background-image: url(<%=@firstPost.image %>);height: 500px; margin:10px;  ">
+  </div>
+  <div class="heroContent">
+    <h3 class="title"><%=@firstPost.title %></h3>
+    <h5 class="description"><%= @firstPost.description.truncate_words(50) %></h5>
+    <a href="/posts/<%= @firstPost.id %>" class="btn btn-warning btn-lg" >Read more..</a>
+  </div>
+<div class="listCards">
+  <h2>Featured Posts</h2>
+  <div class="container">
+    <% @list_of_posts.each do |post| %>
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+        <div class="card " >
+          <img class="card-img-top" src="<%=post.image %>" alt="Card image" height="250px" width="100%">
+          <div class="card-body">
+            <h5 class="card-title"><%=post.title.truncate_words(10) %>..</h5>
+
+            <a href="/posts/<%= post.id %>" class="btn btn-info">Read more..</a>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<footer>
+  <h3>www.allaboutkids.com</h3>
+</footer>
+
+</body>
+</html>
