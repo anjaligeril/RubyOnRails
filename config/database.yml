@@ -5,25 +5,25 @@
 #   gem 'pg'
 #
 default: &default
-  adapter: pg
+  adapter: mysql
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
 development:
   <<: *default
-  database: db/development.pg
+  database: db/development.mysql
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: db/test.pg
+  database: db/test.mysql
 
 production:
   <<: *default
-  host: ec2-54-235-114-242.compute-1.amazonaws.com
-  database: d7nmubcqse4ufc
-  user: kderiuzddtafly
-  port: 5432
-  password: 84c29614e2a641eabf70401c71d172a89448daf9767346958412c5f58a4ac3ca
+  host: op2hpcwcbxb1t4z9.cbetxkdyhwsb.us-east-1.rds.amazonaws.com
+  database: p7tgqh2vkjx9hwih
+  user: g2wjttxy0fbjhpsx
+  port: 3306
+  password: ypl8sox5ggsdhenn
